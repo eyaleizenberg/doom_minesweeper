@@ -1,0 +1,29 @@
+$error-color: #6b0000;
+
+.demon {
+  width: 35px;
+  height: 35px;
+  &.isKiller {
+    background-color: $error-color;
+  }
+}
+
+.adjacentDemons {
+  font-size: 24px;
+  text-shadow: -1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000;
+  &.count1 { color: blue; }
+  &.count2 { color: green; }
+  &.count3 { color: red; }
+  &.count4 { color: purple; }
+  &.count5 { color: darkred; }
+  &.count6 { color: yellow; }
+  &.count7 { color: orange; }
+  &.count8 { color: pink; }
+}
+
+.wrongFlag {
+  color: $error-color;
+  position: absolute;
+  font-size: 18px;
+  text-shadow: -1px 0 #ffffff,0 1px #ffffff,1px 0 #ffffff,0 -1px #ffffff;
+}

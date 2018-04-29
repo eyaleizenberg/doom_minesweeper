@@ -1,0 +1,20 @@
+.cell {
+  width: 40px;
+  height: 40px;
+  background: url('/assets/images/tiles/tile.png') 0 0 / 40px 40px no-repeat;
+  font-family: Doom;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:active {
+    background-color: #aaa;
+  }
+  &.isExposed {
+    background: url('/assets/images/tiles/tile_empty.png') 0 0 / 40px 40px no-repeat;
+  }
+}
+
+.flag {
+  width: 20px;
+  height: 28px;
+}

@@ -1,0 +1,29 @@
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  30% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.floppy {
+  box-shadow: 0 0 12px 1px white;
+  position: absolute;
+  right: -50px;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  right: -50px;
+  animation: fadeInOut 7s forwards;
+}

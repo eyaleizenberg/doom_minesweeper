@@ -1,0 +1,88 @@
+.container {
+  width: 1200px;
+  height: 167px;
+  display: flex;
+  background: url('/assets/images/toolbar/intro_toolbar.png') 0 0 / 1200px 167px no-repeat;
+  &.inProgress {
+    background: url('/assets/images/toolbar/toolbar.png') 0 0 / 1200px 167px no-repeat;
+  }
+}
+
+.content {
+  display: flex;
+}
+
+.introBox {
+  width: 497px;
+  height: 131px;
+  margin: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  font-family: Doom;
+  text-shadow: 4px 2px black;
+}
+
+.gameText {
+  color: #fffd6a;
+  font-size: 28px;
+  cursor: pointer;
+  transition: color linear 300ms;
+  &:hover {
+    color: #fbab47;
+  }
+}
+
+.face {
+  height: 150px;
+  width: 125px;
+  margin: 9px 2px;
+}
+
+.inGameContainer {
+  padding-top: 20px;
+  margin: 10px;
+  justify-content: center;
+  height: 123px;
+  display: flex;
+}
+
+.demonsCount {
+  width: 210px;
+}
+
+.statusText {
+  color: #db0000;
+  font-size: 50px;
+}
+
+.timer {
+  width: 293px;
+  margin-right: 8px;
+  margin-left: 0px;
+  > .text {
+    width: 200px;
+    text-align: start;
+  }
+}
+
+.health {
+  width: 256px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.inGameActions {
+  width: 254px;
+  height: 149px;
+  margin-left: 8px;
+  padding: 0 0 0 15px;
+  flex-direction: column;
+  justify-content: space-around;
+  .gameText {
+    font-size: 20px;
+  }
+}

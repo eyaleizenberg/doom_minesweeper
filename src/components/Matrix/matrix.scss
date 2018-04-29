@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  box-shadow: 0 0 50px 25px black;
+  background-color: black;
+  &.gameOver {
+    pointer-events: none;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,9 +1,12 @@
 {
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
-  "linterOptions": {
-    "exclude": [
-      "config/**/*.js",
-      "node_modules/**/*.ts"
-    ]
+  "extends": [
+    "tslint-plugin-prettier"
+  ],
+  "rules": {
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "prettier": [true, { "singleQuote": true }],
+    "no-invalid-this": false,
+    "object-curly-spacing": [true, "always"],
+    "quotemark": [true, "single", "jsx-double"]
   }
 }

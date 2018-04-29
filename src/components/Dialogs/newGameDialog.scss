@@ -1,0 +1,17 @@
+.textContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  &.levels {
+    margin-top: 35px;
+    > .text {
+      margin-bottom: 14px;
+      cursor: pointer;
+      transition: color linear 300ms;
+      &:hover {
+        color: #fbab47;
+      }
+    }
+  }
+}
