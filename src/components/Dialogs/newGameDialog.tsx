@@ -12,10 +12,10 @@ interface NewGameDialogProps {
   toggleNewGame: () => void;
 }
 
-class NewGameDialog extends React.PureComponent<NewGameDialogProps, null> {
+class NewGameDialog extends React.PureComponent<NewGameDialogProps> {
   handleClick = (event: any) => {
     const { width, height, totalDemons } = DEFAULT_GAME_LEVELS[
-      event.target.getAttribute('data-levelId')
+      event.target.getAttribute('data-levelid')
     ];
     this.props.initMatrix({ width, height, totalDemons });
   };
@@ -46,7 +46,7 @@ class NewGameDialog extends React.PureComponent<NewGameDialogProps, null> {
             return (
               <span
                 key={gameLevel.id}
-                data-levelId={gameLevel.id}
+                data-levelid={gameLevel.id}
                 className={classnames(dialogClasses.text, classes.text)}
                 onClick={this.handleClick}
                 data-protractor-hook={'gameLevel'}

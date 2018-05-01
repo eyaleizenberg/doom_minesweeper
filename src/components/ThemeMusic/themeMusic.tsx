@@ -1,8 +1,9 @@
 import * as React from 'react';
 import Sound from 'react-sound';
+const doome1m1 = require('../../assets/sounds/doom_e1m1.mp3');
 
-class ThemeMusic extends React.PureComponent<null, {time: number}> {
-  constructor(props) {
+class ThemeMusic extends React.PureComponent<any, { time: number }> {
+  constructor(props: any) {
     super(props);
     this.state = {
       time: Date.now()
@@ -19,10 +20,10 @@ class ThemeMusic extends React.PureComponent<null, {time: number}> {
   render() {
     return (
       <Sound
-        url={`${window.__STATICS_BASE_URL__}/assets/sounds/doom_e1m1.mp3`}
+        url={doome1m1}
         playStatus={Sound.status.PLAYING}
         onFinishedPlaying={this.handleFinishedPlaying}
-        />
+      />
     );
   }
 }

@@ -5,27 +5,33 @@ import { showCustomGameDialog, toggleNewGame } from '../redux/actions/game';
 import { fetchSaved } from '../redux/actions/files';
 import { ICellsState } from '../interfaces/cellInterface';
 import { IGameState } from '../interfaces/gameInterface';
+import { getSortedData } from '../redux/reducers/cells';
+import {
+  getIsGameOver,
+  getIsGameWon,
+  getNewGameDialogShown,
+  getGameInProgress,
+  getCustomGameDialogShown,
+  getSaveDialogShown,
+  getLoadDialogShown
+} from '../redux/reducers/game';
 
-const mapStateToProps = ({ cells: ICellsState, game: IGameState }) => {
-  const {
-    isGameOver,
-    isGameWon,
-    newGameDialogShown,
-    gameInProgress,
-    customGameDialogShown,
-    saveDialogShown,
-    loadDialogShown
-  } = game;
-
+const mapStateToProps = ({
+  cells,
+  game
+}: {
+  cells: ICellsState;
+  game: IGameState;
+}) => {
   return {
-    sortedData: cells.sortedData,
-    isGameOver,
-    isGameWon,
-    newGameDialogShown,
-    gameInProgress,
-    customGameDialogShown,
-    saveDialogShown,
-    loadDialogShown
+    sortedData: getSortedData(cells),
+    isGameOver: getIsGameOver(game),
+    isGameWon: getIsGameWon(game),
+    newGameDialogShown: getNewGameDialogShown(game),
+    gameInProgress: getGameInProgress(game),
+    customGameDialogShown: getCustomGameDialogShown(game),
+    saveDialogShown: getSaveDialogShown(game),
+    loadDialogShown: getLoadDialogShown(game)
   };
 };
 

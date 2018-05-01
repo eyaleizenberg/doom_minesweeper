@@ -5,7 +5,9 @@ import * as classnames from 'classnames';
 import customGameFields from '../../constants/customGameFields';
 
 interface ICustomGameDialogProps {
-  initMatrix: (propertis: {width: number, height: number, totalDemons: number}) => void;
+  initMatrix: (
+    propertis: { width: number; height: number; totalDemons: number }
+  ) => void;
 }
 
 interface ICustomGameDialogState {
@@ -15,8 +17,11 @@ interface ICustomGameDialogState {
   isValid: boolean;
 }
 
-class CustomGameDialog extends React.PureComponent<ICustomGameDialogProps, ICustomGameDialogState> {
-  constructor(props) {
+class CustomGameDialog extends React.PureComponent<
+  ICustomGameDialogProps,
+  ICustomGameDialogState
+> {
+  constructor(props: ICustomGameDialogProps) {
     super(props);
     this.state = {
       width: customGameFields.width.defaultValue,
@@ -28,7 +33,7 @@ class CustomGameDialog extends React.PureComponent<ICustomGameDialogProps, ICust
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  valuesAreValid(data) {
+  valuesAreValid(data: { [key: string]: number | boolean }) {
     let isValid = true;
     Object.keys(customGameFields).forEach(key => {
       if (!data[key]) {
@@ -39,14 +44,14 @@ class CustomGameDialog extends React.PureComponent<ICustomGameDialogProps, ICust
     return isValid;
   }
 
-  handleChange(event) {
+  handleChange(event: any) {
     const domField = event.target;
     const customField = customGameFields[domField.dataset.attribute];
-    let {value} = domField;
+    let { value } = domField;
     if (value > customField.maxValue) {
       value = customField.maxValue;
     }
-    const data = {...this.state, [customField.attribute]: value};
+    const data = { ...this.state, [customField.attribute]: value };
     data.isValid = this.valuesAreValid(data);
     this.setState({
       ...data
@@ -54,9 +59,9 @@ class CustomGameDialog extends React.PureComponent<ICustomGameDialogProps, ICust
   }
 
   handleSubmit() {
-    const {width, height, totalDemons, isValid} = this.state;
+    const { width, height, totalDemons, isValid } = this.state;
     if (!!isValid) {
-      this.props.initMatrix({width, height, totalDemons});
+      this.props.initMatrix({ width, height, totalDemons });
     }
   }
 
@@ -65,7 +70,9 @@ class CustomGameDialog extends React.PureComponent<ICustomGameDialogProps, ICust
       const customField = customGameFields[key];
       return (
         <div key={customField.id} className={classes.fieldContainer}>
-          <span className={classnames(dialogClasses.text, classes.label)}>{customField.label}</span>
+          <span className={classnames(dialogClasses.text, classes.label)}>
+            {customField.label}
+          </span>
           <input
             className={classes.input}
             type="text"
@@ -73,7 +80,7 @@ class CustomGameDialog extends React.PureComponent<ICustomGameDialogProps, ICust
             onChange={this.handleChange}
             data-attribute={customField.attribute}
             placeholder={`MAX ${customField.maxValue}`}
-            />
+          />
         </div>
       );
     });
@@ -82,12 +89,16 @@ class CustomGameDialog extends React.PureComponent<ICustomGameDialogProps, ICust
   render() {
     return (
       <div className={dialogClasses.container}>
-        <span className={dialogClasses.text}>SELECT YOUR PERSONAL NIGHTMARE:</span>
+        <span className={dialogClasses.text}>
+          SELECT YOUR PERSONAL NIGHTMARE:
+        </span>
         {this.renderFields()}
         <span
-          className={classnames(dialogClasses.text, classes.startGame, {[classes.isValid]: this.state.isValid})}
+          className={classnames(dialogClasses.text, classes.startGame, {
+            [classes.isValid]: this.state.isValid
+          })}
           onClick={this.handleSubmit}
-          >
+        >
           START GAME!
         </span>
       </div>

@@ -2,7 +2,6 @@ import { Dispatch } from 'redux';
 import { createAction } from 'redux-actions';
 import * as ACTIONS from '../../constants/actionTypes';
 // import axios from 'axios';
-import { IFile } from '../../interfaces/fileInterface';
 // import { getGamesRoute } from '../../constants/routes';
 import { getOrGenerateUserId } from '../../utilities/localStorage';
 import { IState } from '../../interfaces/state';
@@ -22,7 +21,7 @@ export const fetchSaved = () => (dispatch: Dispatch<IState>): void => {
   // });
 };
 
-export const saveFile = (opts: IFile) => (
+export const saveFile = (opts: { id: string; name: string }) => (
   dispatch: Dispatch<IState>,
   getState: () => IState
 ): void => {

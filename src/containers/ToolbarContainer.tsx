@@ -1,16 +1,29 @@
-import * as React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Toolbar from '../components/Toolbar/toolbar';
-import {toggleNewGame, toggleSaveDialog, toggleLoadDialog} from '../redux/actions/game';
+import { IGameState } from '../interfaces/gameInterface';
+import {
+  getGameInProgress,
+  getIsGameOver,
+  getIsGameWon,
+  getTimer
+} from '../redux/reducers/game';
+import {
+  toggleNewGame,
+  toggleSaveDialog,
+  toggleLoadDialog
+} from '../redux/actions/game';
 
-const mapStateToProps = ({game}) => {
-  const {gameInProgress, isGameOver, isGameWon, timer} = game;
+const mapStateToProps = ({ game }: { game: IGameState }) => {
   return {
-    gameInProgress,
-    isGameOver,
-    isGameWon,
-    timer
+    gameInProgress: getGameInProgress(game),
+    isGameOver: getIsGameOver(game),
+    isGameWon: getIsGameWon(game),
+    timer: getTimer(game)
   };
 };
 
-export default connect(mapStateToProps, {toggleNewGame, toggleSaveDialog, toggleLoadDialog})(Toolbar);
+export default connect(mapStateToProps, {
+  toggleNewGame,
+  toggleSaveDialog,
+  toggleLoadDialog
+})(Toolbar);

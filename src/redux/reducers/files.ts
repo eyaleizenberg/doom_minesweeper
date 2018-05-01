@@ -1,18 +1,21 @@
 import { handleActions } from 'redux-actions';
 import * as ACTIONS from '../../constants/actionTypes';
 import generateUuid from '../../utilities/generateUuid';
-import { IFilesState } from '../../interfaces/fileInterface';
+import { IFilesState, IFile } from '../../interfaces/fileInterface';
 import { IGame } from '../../interfaces/gameInterface';
 
 const MAX_FILES = 5;
 
 export const defaultState = {
-  savedFiles: {}
+  savedFiles: {},
+  fileJustSaved: ''
 };
 
 export const getSavedGames = (state: IFilesState): { [key: string]: IFile } =>
   state.savedFiles;
-export const getFileJustSaved = (state: IFilesState) => state.fileJustSaved;
+
+export const getFileJustSaved = (state: IFilesState): string =>
+  state.fileJustSaved;
 
 const generateEmpty = (existingGamesLength: number): IGame[] => {
   let emptyGames = [];
@@ -51,7 +54,7 @@ export default handleActions(
       return { ...state, fileJustSaved: id, savedFiles };
     },
     [ACTIONS.FILE_SAVED_RESET]: (state: IFilesState) => {
-      return { ...state, fileJustSaved: null };
+      return { ...state, fileJustSaved: '' };
     }
   },
   defaultState

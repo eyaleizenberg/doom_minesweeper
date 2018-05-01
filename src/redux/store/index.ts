@@ -1,11 +1,10 @@
-import {compose, createStore, applyMiddleware} from 'redux';
+import { compose, createStore, applyMiddleware } from 'redux';
 import reducer from '../reducers';
 import thunk from 'redux-thunk';
 import immutableStateInvariant from 'redux-immutable-state-invariant';
 declare const devToolsExtension: any;
-const withDevTools = () => (
-  typeof(devToolsExtension) === 'function' ? devToolsExtension() : f => f
-);
+const withDevTools = () =>
+  typeof devToolsExtension === 'function' ? devToolsExtension() : (f: any) => f;
 
 const middlewares = [thunk];
 
@@ -15,7 +14,7 @@ if (process.env.NODE_ENV === 'development') {
 
 const enhancer = compose(applyMiddleware(...middlewares), withDevTools());
 
-export default function configureStore({initialState = {}}) {
+export default function configureStore({ initialState = {} }) {
   const store = createStore(reducer, initialState, enhancer);
   //
   // if (module.hot) {

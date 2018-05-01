@@ -2,10 +2,9 @@ import { handleActions } from 'redux-actions';
 import * as ACTIONS from '../../constants/actionTypes';
 import { genXy, genSurrounding } from '../../utilities/genXy';
 import { ICell, ICellMap } from '../../interfaces/cellInterface';
-import { Dispatch } from 'redux';
 import { ICellsState } from '../../interfaces/cellInterface';
 
-const MAX_KNOWN_DEMON_TYPES = 12;
+export const MAX_KNOWN_DEMON_TYPES = 12;
 
 export const defaultState = {
   sortedData: [],
@@ -121,8 +120,12 @@ const markAllVisible = (data: ICellMap, cellId?: string): ICellMap => {
   return tempData;
 };
 
-export const getCellsData = state => state.data;
-export const getTotalDemons = state => state.totalDemons;
+export const getCellsData = (state: ICellsState): ICellMap => state.data;
+
+export const getTotalDemons = (state: ICellsState): number => state.totalDemons;
+
+export const getSortedData = (state: ICellsState): string[][] =>
+  state.sortedData;
 
 const traverseFromEmpty = (data: ICellMap, initialCell: ICell): void => {
   const adjacentCoordinates = genSurrounding(initialCell.x, initialCell.y);

@@ -2,26 +2,24 @@ import * as React from 'react';
 import * as classes from './cell.scss';
 import * as classnames from 'classnames';
 import CellContent from './cellContent';
+import { ICell } from '../../interfaces/cellInterface';
+const barrel = require('../../assets/images/barrel.png');
 
 interface ICellProps {
-  id: string;
-  isDemon: boolean;
-  demonId?: number;
-  isExposed: boolean;
-  x: number;
-  y: number;
-  adjacentDemons: number;
-  isKiller: boolean;
-  isFlagged: boolean;
-  revealCell: (cellId: string) => any;
-  toggleCellFlag: (cellId: string) => any;
+  cell: ICell;
+  revealCell: (id: string) => any;
+  toggleCellFlag: (id: string) => any;
   isGameWon: boolean;
   isGameOver: boolean;
+  id: string;
 }
 
-class Cell extends React.PureComponent<ICellProps, null> {
+class Cell extends React.PureComponent<ICellProps> {
   handleClick = () => {
-    const { revealCell, id, isFlagged } = this.props;
+    const {
+      revealCell,
+      cell: { id, isFlagged }
+    } = this.props;
     if (!isFlagged) {
       revealCell(id);
     }
@@ -29,32 +27,32 @@ class Cell extends React.PureComponent<ICellProps, null> {
 
   handleContextMenu = (event: any) => {
     event.preventDefault();
-    const { toggleCellFlag, id, isExposed } = this.props;
+    const {
+      toggleCellFlag,
+      cell: { id, isExposed }
+    } = this.props;
     if (!isExposed) {
       toggleCellFlag(id);
     }
   };
 
   renderFlag() {
-    return (
-      <img
-        className={classes.flag}
-        src={`${window.__STATICS_BASE_URL__}/assets/images/barrel.png`}
-      />
-    );
+    return <img className={classes.flag} src={barrel} />;
   }
 
   render() {
     const {
-      isDemon,
-      adjacentDemons,
-      isExposed,
-      demonId,
-      isKiller,
-      isFlagged,
+      cell: {
+        isDemon,
+        adjacentDemons,
+        isExposed,
+        demonId,
+        isKiller,
+        id,
+        isFlagged
+      },
       isGameWon,
-      isGameOver,
-      id
+      isGameOver
     } = this.props;
 
     return (

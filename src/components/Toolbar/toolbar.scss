@@ -2,9 +2,11 @@
   width: 1200px;
   height: 167px;
   display: flex;
-  background: url('/assets/images/toolbar/intro_toolbar.png') 0 0 / 1200px 167px no-repeat;
+  background: url("../../assets/images/toolbar/intro_toolbar.png") 0 0 / 1200px
+    167px no-repeat;
   &.inProgress {
-    background: url('/assets/images/toolbar/toolbar.png') 0 0 / 1200px 167px no-repeat;
+    background: url("../../assets/images/toolbar/toolbar.png") 0 0 / 1200px
+      167px no-repeat;
   }
 }
 

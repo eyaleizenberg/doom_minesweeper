@@ -4,31 +4,42 @@ import Face from '../Face/face';
 import * as classnames from 'classnames';
 import Sound from 'react-sound';
 import ThemeMusic from '../ThemeMusic/themeMusic';
+const doom2theme = require('../../assets/sounds/doom2theme.mp3');
 
 interface IToolbarProps {
   gameInProgress: boolean;
-  toggleNewGame: () => void;
+  toggleNewGame: () => any;
   isGameOver: boolean;
   isGameWon: boolean;
   timer: number;
-  toggleSaveDialog: () => void;
-  toggleLoadDialog: () => void;
+  toggleSaveDialog: () => any;
+  toggleLoadDialog: () => any;
 }
 
-class Toolbar extends React.PureComponent<IToolbarProps, null> {
-  renderIntroBox(text, handleClick, protractorHook) {
+class Toolbar extends React.PureComponent<IToolbarProps> {
+  renderIntroBox(
+    text: string,
+    handleClick: () => void,
+    protractorHook: string
+  ) {
     return (
       <div className={classes.introBox}>
-        <span className={classnames(classes.text, classes.gameText)} onClick={handleClick} data-protractor-hook={protractorHook}>{text}</span>
+        <span
+          className={classnames(classes.text, classes.gameText)}
+          onClick={handleClick}
+          data-protractor-hook={protractorHook}
+        >
+          {text}
+        </span>
       </div>
     );
   }
 
   renderFace() {
-    const {isGameWon, isGameOver} = this.props;
+    const { isGameWon, isGameOver } = this.props;
     return (
       <div className={classes.face}>
-        <Face isGameOver={isGameOver} isGameWon={isGameWon}/>
+        <Face isGameOver={isGameOver} isGameWon={isGameWon} />
       </div>
     );
   }
@@ -36,31 +47,35 @@ class Toolbar extends React.PureComponent<IToolbarProps, null> {
   renderIntroContent() {
     return (
       <div className={classes.content}>
-        <Sound
-          url={`${window.__STATICS_BASE_URL__}/assets/sounds/doom2theme.mp3`}
-          playStatus={Sound.status.PLAYING}
-          />
+        <Sound url={doom2theme} playStatus={Sound.status.PLAYING} />
         {this.renderIntroBox('NEW GAME', this.props.toggleNewGame, 'newGame')}
         {this.renderFace()}
-        {this.renderIntroBox('LOAD GAME', this.props.toggleLoadDialog, 'loadGame')}
+        {this.renderIntroBox(
+          'LOAD GAME',
+          this.props.toggleLoadDialog,
+          'loadGame'
+        )}
       </div>
     );
   }
 
   formatTime() {
-    const {timer} = this.props;
+    const { timer } = this.props;
     let d = Number(timer);
-    const m = Math.floor(d % 3600 / 60);
-    const s = Math.floor(d % 3600 % 60);
+    const m = Math.floor((d % 3600) / 60);
+    const s = Math.floor((d % 3600) % 60);
     return ('0' + m).slice(-2) + ':' + ('0' + s).slice(-2);
   }
 
   renderInProgressContent() {
-    const {isGameOver} = this.props;
+    const { isGameOver } = this.props;
 
     return (
-      <div className={classes.content} data-protractor-hook={'inProgressToolbar'}>
-        <ThemeMusic/>
+      <div
+        className={classes.content}
+        data-protractor-hook={'inProgressToolbar'}
+      >
+        <ThemeMusic />
         {this.renderInGameContainer(classes.demonsCount, '100')}
         {this.renderInGameContainer(classes.timer, this.formatTime())}
         {this.renderFace()}
@@ -73,27 +88,53 @@ class Toolbar extends React.PureComponent<IToolbarProps, null> {
   renderInGameContainer(containerClass: string, text: string) {
     return (
       <div className={classnames(classes.inGameContainer, containerClass)}>
-        <span className={classnames(classes.text, classes.statusText)}>{text}</span>
+        <span className={classnames(classes.text, classes.statusText)}>
+          {text}
+        </span>
       </div>
     );
   }
 
   renderInGameActions() {
-    const {toggleNewGame, toggleSaveDialog, toggleLoadDialog} = this.props;
+    const { toggleNewGame, toggleSaveDialog, toggleLoadDialog } = this.props;
     return (
-      <div className={classnames(classes.inGameContainer, classes.inGameActions)}>
-        <span onClick={toggleNewGame} className={classnames(classes.text, classes.gameText)}>NEW GAME</span>
-        <span onClick={toggleSaveDialog} className={classnames(classes.text, classes.gameText)}>SAVE GAME</span>
-        <span onClick={toggleLoadDialog} className={classnames(classes.text, classes.gameText)}>LOAD GAME</span>
+      <div
+        className={classnames(classes.inGameContainer, classes.inGameActions)}
+      >
+        <span
+          onClick={toggleNewGame}
+          className={classnames(classes.text, classes.gameText)}
+        >
+          NEW GAME
+        </span>
+        <span
+          onClick={toggleSaveDialog}
+          className={classnames(classes.text, classes.gameText)}
+        >
+          SAVE GAME
+        </span>
+        <span
+          onClick={toggleLoadDialog}
+          className={classnames(classes.text, classes.gameText)}
+        >
+          LOAD GAME
+        </span>
       </div>
     );
   }
 
   render() {
-    const {gameInProgress} = this.props;
+    const { gameInProgress } = this.props;
     return (
-      <div className={classnames(classes.container, {[classes.inProgress]: gameInProgress})} data-protractor-hook={'toolbar'}>
-        {gameInProgress ? this.renderInProgressContent() : this.renderIntroContent()}
+      <div
+        className={classnames(classes.container, {
+          [classes.inProgress]: gameInProgress
+        })}
+        data-protractor-hook={'toolbar'}
+      >
+        {gameInProgress
+          ? this.renderInProgressContent()
+          : this.renderIntroContent()}
       </div>
     );
   }

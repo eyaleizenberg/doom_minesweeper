@@ -1,4 +1,4 @@
-import * as React from 'react'  ;
+import * as React from 'react';
 import * as classes from './main.scss';
 import Matrix from '../Matrix/matrix';
 import ToolbarContainer from '../../containers/ToolbarContainer';
@@ -9,29 +9,31 @@ import SaveDialogContainer from '../../containers/saveDialogContainer';
 import LoadDialogContainer from '../../containers/loadDialogContainer';
 
 interface IMainProps {
-  initMatrix: (properties: { width: number, height: number, totalDemons: number }) => void;
-  sortedData?: string[][];
+  initMatrix: (
+    properties: { width: number; height: number; totalDemons: number }
+  ) => any;
+  sortedData: string[][];
   isGameOver: boolean;
   isGameWon: boolean;
   newGameDialogShown: boolean;
   gameInProgress: boolean;
-  showCustomGameDialog: () => void;
+  showCustomGameDialog: () => any;
   customGameDialogShown: boolean;
   saveDialogShown: boolean;
   loadDialogShown: boolean;
-  toggleNewGame: () => void;
-  fetchSaved: () => void;
+  toggleNewGame: () => any;
+  fetchSaved: () => any;
 }
 
-class Main extends React.PureComponent<IMainProps, null> {
+class Main extends React.PureComponent<IMainProps> {
   componentWillMount() {
     this.props.fetchSaved();
   }
 
   renderMatrix() {
-    const {sortedData, isGameOver, isGameWon} = this.props;
+    const { sortedData, isGameOver, isGameWon } = this.props;
     return (
-      <Matrix sortedData={sortedData} preventClicks={isGameWon || isGameOver}/>
+      <Matrix sortedData={sortedData} preventClicks={isGameWon || isGameOver} />
     );
   }
 
@@ -48,37 +50,39 @@ class Main extends React.PureComponent<IMainProps, null> {
     } = this.props;
 
     if (newGameDialogShown) {
-      return <NewGameDialog initMatrix={initMatrix} showCustomGameDialog={showCustomGameDialog} toggleNewGame={toggleNewGame}/>;
+      return (
+        <NewGameDialog
+          initMatrix={initMatrix}
+          showCustomGameDialog={showCustomGameDialog}
+          toggleNewGame={toggleNewGame}
+        />
+      );
     }
 
     if (customGameDialogShown) {
-      return <CustomGameDialog initMatrix={initMatrix}/>;
+      return <CustomGameDialog initMatrix={initMatrix} />;
     }
 
     if (saveDialogShown) {
-      return <SaveDialogContainer/>;
+      return <SaveDialogContainer />;
     }
 
     if (loadDialogShown) {
-      return <LoadDialogContainer/>;
+      return <LoadDialogContainer />;
     }
 
     if (gameInProgress) {
       return this.renderMatrix();
     }
 
-    return (
-      <Logo/>
-    );
+    return <Logo />;
   }
 
   render() {
     return (
       <div className={classes.main} data-protractor-hook={'mainContainer'}>
-        <div className={classes.content}>
-          {this.renderContent()}
-        </div>
-        <ToolbarContainer/>
+        <div className={classes.content}>{this.renderContent()}</div>
+        <ToolbarContainer />
       </div>
     );
   }

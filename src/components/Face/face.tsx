@@ -1,26 +1,30 @@
 import * as React from 'react';
 import * as classes from './face.scss';
 import Sound from 'react-sound';
+const dying = require('../../assets/images/faces/dying.gif');
+const god = require('../../assets/images/faces/god.png');
+const normal = require('../../assets/images/faces/normal.gif');
+const death = require('../../assets/sounds/death.wav');
+const victory = require('../../assets/sounds/victory.wav');
 
 interface IFaceProps {
   isGameOver: boolean;
   isGameWon: boolean;
 }
 
-export default class Face extends React.PureComponent<IFaceProps, null> {
+export default class Face extends React.PureComponent<IFaceProps> {
   buildUrl() {
-    const {isGameOver, isGameWon} = this.props;
-    const baseUrl = `${window.__STATICS_BASE_URL__}/assets/images/faces/`;
+    const { isGameOver, isGameWon } = this.props;
 
     if (isGameOver) {
-      return baseUrl + 'dying.gif';
+      return dying;
     }
 
     if (isGameWon) {
-      return baseUrl + 'god.png';
+      return god;
     }
 
-    return baseUrl + 'normal.gif';
+    return normal;
   }
 
   render() {
@@ -29,16 +33,22 @@ export default class Face extends React.PureComponent<IFaceProps, null> {
         <img
           src={this.buildUrl()}
           className={classes.container}
-          data-protractor-hook={this.props.isGameOver ? 'deadFace' : 'aliveFace'}
-          />
+          data-protractor-hook={
+            this.props.isGameOver ? 'deadFace' : 'aliveFace'
+          }
+        />
         <Sound
-          url={`${window.__STATICS_BASE_URL__}/assets/sounds/death.wav`}
-          playStatus={Sound.status[this.props.isGameOver ? 'PLAYING' : 'STOPPED']}
-          />
+          url={death}
+          playStatus={
+            Sound.status[this.props.isGameOver ? 'PLAYING' : 'STOPPED']
+          }
+        />
         <Sound
-          url={`${window.__STATICS_BASE_URL__}/assets/sounds/victory.wav`}
-          playStatus={Sound.status[this.props.isGameWon ? 'PLAYING' : 'STOPPED']}
-          />
+          url={victory}
+          playStatus={
+            Sound.status[this.props.isGameWon ? 'PLAYING' : 'STOPPED']
+          }
+        />
       </div>
     );
   }

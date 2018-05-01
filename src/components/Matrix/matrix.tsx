@@ -4,24 +4,35 @@ import * as classes from './matrix.scss';
 import * as classnames from 'classnames';
 
 interface IMatrixProps {
-  sortedData: string[][];
+  sortedData?: string[][];
   preventClicks: boolean;
 }
 
-class Matrix extends React.PureComponent<IMatrixProps, null> {
+class Matrix extends React.PureComponent<IMatrixProps> {
+  public static defaultProps: Partial<IMatrixProps> = {
+    sortedData: []
+  };
+
   renderCells() {
+    if (!this.props.sortedData) {
+      return null;
+    }
+
     return this.props.sortedData.map((column, columnIndex) => (
       <div className={classes.column} key={columnIndex}>
-        {
-          column.map(id => <CellContainer key={id} id={id}/>)
-        }
+        {column.map(id => <CellContainer key={id} id={id} />)}
       </div>
     ));
   }
 
   render() {
     return (
-      <div className={classnames(classes.container, {[classes.gameOver]: this.props.preventClicks})} data-protractor-hook={'matrix'}>
+      <div
+        className={classnames(classes.container, {
+          [classes.gameOver]: this.props.preventClicks
+        })}
+        data-protractor-hook={'matrix'}
+      >
         {this.renderCells()}
       </div>
     );
