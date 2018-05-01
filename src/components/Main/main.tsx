@@ -8,6 +8,8 @@ import Logo from '../Logo/logo';
 import SaveDialogContainer from '../../containers/saveDialogContainer';
 import LoadDialogContainer from '../../containers/loadDialogContainer';
 
+const initialWidth: number = 1200;
+
 interface IMainProps {
   initMatrix: (
     properties: { width: number; height: number; totalDemons: number }
@@ -25,8 +27,27 @@ interface IMainProps {
   fetchSaved: () => any;
 }
 
-class Main extends React.PureComponent<IMainProps> {
-  componentWillMount() {
+interface IMainState {
+  scaleRatio: number;
+}
+
+class Main extends React.PureComponent<IMainProps, IMainState> {
+  constructor(props: IMainProps) {
+    super(props);
+    this.state = {
+      scaleRatio: this.calcRatio()
+    };
+  }
+
+  calcRatio() {
+    const ratio = window.innerWidth / initialWidth;
+    return ratio > 1 ? 1 : ratio;
+  }
+
+  onResize = () => this.setState({ scaleRatio: this.calcRatio() });
+
+  componentDidMount() {
+    window.addEventListener('resize', this.onResize);
     this.props.fetchSaved();
   }
 
@@ -80,9 +101,15 @@ class Main extends React.PureComponent<IMainProps> {
 
   render() {
     return (
-      <div className={classes.main} data-protractor-hook={'mainContainer'}>
-        <div className={classes.content}>{this.renderContent()}</div>
-        <ToolbarContainer />
+      <div className={classes.mainWrapper}>
+        <div
+          style={{ transform: `scale(${this.state.scaleRatio})` }}
+          className={classes.main}
+          data-protractor-hook={'mainContainer'}
+        >
+          <div className={classes.content}>{this.renderContent()}</div>
+          <ToolbarContainer />
+        </div>
       </div>
     );
   }
