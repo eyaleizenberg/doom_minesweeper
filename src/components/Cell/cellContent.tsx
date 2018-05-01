@@ -26,7 +26,9 @@ const demons = {
   '10': require('../../assets/images/demons/10.png'),
   '10_dead': require('../../assets/images/demons/10_dead.png'),
   '11': require('../../assets/images/demons/11.png'),
-  '11_dead': require('../../assets/images/demons/11_dead.png')
+  '11_dead': require('../../assets/images/demons/11_dead.png'),
+  '12': require('../../assets/images/demons/12.png'),
+  '12_dead': require('../../assets/images/demons/12_dead.png')
 };
 
 interface ICellContentProps {
