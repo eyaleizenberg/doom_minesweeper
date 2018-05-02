@@ -1,0 +1,293 @@
+.main__mainWrapper___2qa5_ {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; }
+
+.main__main___1ujts {
+  display: flex;
+  flex-direction: column;
+  background: url(/doom_minesweeper/static/media/background.1c1e12d2.jpg) 0 0/1200px 670px no-repeat;
+  height: 670px;
+  width: 1200px; }
+
+.main__content___3iCuG {
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+.cell__cell___tlnAv {
+  width: 40px;
+  height: 40px;
+  background: url(data:image/png;base64,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) 0 0/40px 40px no-repeat;
+  font-family: Doom;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .cell__cell___tlnAv:active {
+    background-color: #aaa; }
+  .cell__cell___tlnAv.cell__isExposed___1f2g_ {
+    background: url(data:image/png;base64,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) 0 0/40px 40px no-repeat; }
+
+.cell__flag___2ppDW {
+  width: 20px;
+  height: 28px; }
+.cellContent__demon___3ZHXt {
+  width: 35px;
+  height: 35px; }
+  .cellContent__demon___3ZHXt.cellContent__isKiller___2evq9 {
+    background-color: #6b0000; }
+
+.cellContent__adjacentDemons___1kZh7 {
+  font-size: 24px;
+  text-shadow: -1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000; }
+  .cellContent__adjacentDemons___1kZh7.cellContent__count1___12R-k {
+    color: blue; }
+  .cellContent__adjacentDemons___1kZh7.cellContent__count2___16lPb {
+    color: green; }
+  .cellContent__adjacentDemons___1kZh7.cellContent__count3___2IlQx {
+    color: red; }
+  .cellContent__adjacentDemons___1kZh7.cellContent__count4___3uezW {
+    color: purple; }
+  .cellContent__adjacentDemons___1kZh7.cellContent__count5___1SI2R {
+    color: darkred; }
+  .cellContent__adjacentDemons___1kZh7.cellContent__count6___2R-EL {
+    color: yellow; }
+  .cellContent__adjacentDemons___1kZh7.cellContent__count7___3Y7CO {
+    color: orange; }
+  .cellContent__adjacentDemons___1kZh7.cellContent__count8___3vRJy {
+    color: pink; }
+
+.cellContent__wrongFlag___2WOw8 {
+  color: #6b0000;
+  position: absolute;
+  font-size: 18px;
+  text-shadow: -1px 0 #ffffff,0 1px #ffffff,1px 0 #ffffff,0 -1px #ffffff; }
+.matrix__container___knrv9 {
+  display: flex;
+  box-shadow: 0 0 50px 25px black;
+  background-color: black; }
+  .matrix__container___knrv9.matrix__gameOver___oXXys {
+    pointer-events: none; }
+
+.matrix__column___2g1r0 {
+  display: flex;
+  flex-direction: column; }
+.toolbar__container___ZuCeU {
+  width: 1200px;
+  height: 167px;
+  display: flex;
+  background: url(/doom_minesweeper/static/media/intro_toolbar.53cec9a2.png) 0 0/1200px 167px no-repeat; }
+  .toolbar__container___ZuCeU.toolbar__inProgress___11s2E {
+    background: url(/doom_minesweeper/static/media/toolbar.b1a62497.png) 0 0/1200px 167px no-repeat; }
+
+.toolbar__content___1d0C- {
+  display: flex; }
+
+.toolbar__introBox___1Xuaw {
+  width: 497px;
+  height: 131px;
+  margin: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.toolbar__text___1pLxs {
+  font-family: Doom;
+  text-shadow: 4px 2px black; }
+
+.toolbar__gameText___1O7cT {
+  color: #fffd6a;
+  font-size: 28px;
+  cursor: pointer;
+  transition: color linear 300ms; }
+  .toolbar__gameText___1O7cT:hover {
+    color: #fbab47; }
+
+.toolbar__face___3TJA9 {
+  height: 150px;
+  width: 125px;
+  margin: 9px 2px; }
+
+.toolbar__inGameContainer___1KfLf {
+  padding-top: 20px;
+  margin: 10px;
+  justify-content: center;
+  height: 123px;
+  display: flex; }
+
+.toolbar__demonsCount___1Q1Ze {
+  width: 210px; }
+
+.toolbar__statusText___1ayNX {
+  color: #db0000;
+  font-size: 50px; }
+
+.toolbar__timer___2suDx {
+  width: 293px;
+  margin-right: 8px;
+  margin-left: 0px; }
+  .toolbar__timer___2suDx > .toolbar__text___1pLxs {
+    width: 200px;
+    text-align: start; }
+
+.toolbar__health___2qNzt {
+  width: 256px;
+  margin-left: 8px;
+  margin-right: 8px; }
+
+.toolbar__inGameActions___21_ki {
+  width: 254px;
+  height: 149px;
+  margin-left: 8px;
+  padding: 0 0 0 15px;
+  flex-direction: column;
+  justify-content: space-around; }
+  .toolbar__inGameActions___21_ki .toolbar__gameText___1O7cT {
+    font-size: 20px; }
+.face__container___2oIgN {
+  width: 100%;
+  height: 100%; }
+.newGameDialog__textContainer___1EVVl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; }
+  .newGameDialog__textContainer___1EVVl.newGameDialog__levels___1ZfYA {
+    margin-top: 35px; }
+    .newGameDialog__textContainer___1EVVl.newGameDialog__levels___1ZfYA > .newGameDialog__text___22JI6 {
+      margin-bottom: 14px;
+      cursor: pointer;
+      transition: color linear 300ms; }
+      .newGameDialog__textContainer___1EVVl.newGameDialog__levels___1ZfYA > .newGameDialog__text___22JI6:hover {
+        color: #fbab47; }
+.dialogs__container___1V7No {
+  height: 507px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative; }
+
+.dialogs__text___2sxQ9, .dialogs__closeButton___Sym8Y {
+  font-family: Doom;
+  color: #db0000;
+  font-size: 30px; }
+
+.dialogs__closeButton___Sym8Y {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  cursor: pointer; }
+
+.dialogs__bigInput___1fuLa {
+  background: url(/doom_minesweeper/static/media/big_input.42de9cd5.png) 0 0/470px 53px no-repeat;
+  width: 470px;
+  height: 53px;
+  border: none;
+  font-family: Doom;
+  font-size: 28px;
+  color: white;
+  box-sizing: border-box;
+  padding: 0 15px 4px 15px;
+  text-shadow: 4px 2px black;
+  transition: color linear 300ms; }
+  .dialogs__bigInput___1fuLa::placeholder {
+    font-size: 20px; }
+  .dialogs__bigInput___1fuLa:hover {
+    color: #fbab47; }
+.customGameDialog__fieldContainer___3jZDG {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; }
+
+.customGameDialog__label___1eZ3t {
+  font-size: 24px;
+  width: 200px;
+  text-align: end;
+  margin-right: 20px; }
+
+.customGameDialog__input___TGSPC {
+  background: url(/doom_minesweeper/static/media/small_input.bf537fd9.png) 0 0/153px 53px no-repeat;
+  width: 153px;
+  height: 53px;
+  border: none;
+  font-family: Doom;
+  font-size: 28px;
+  color: white;
+  box-sizing: border-box;
+  padding-left: 10px;
+  text-shadow: 4px 2px black; }
+  .customGameDialog__input___TGSPC::placeholder {
+    font-size: 23px; }
+
+.customGameDialog__startGame___2F774 {
+  color: #aaa;
+  margin-top: 40px;
+  cursor: not-allowed; }
+  .customGameDialog__startGame___2F774.customGameDialog__isValid___3vWD2 {
+    color: #fffd6a;
+    cursor: pointer; }
+.logo__container___3U5hG {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -30px; }
+
+.logo__logo___2f4SU {
+  width: 520px; }
+
+.logo__text___DfXZx {
+  color: white;
+  font-family: Doom;
+  font-size: 30px;
+  margin-top: -30px; }
+@keyframes saveDialog__fadeInOut___3m8sv {
+  0% {
+    opacity: 0; }
+  30% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+.saveDialog__title___3kGCy {
+  margin-bottom: 20px; }
+
+.saveDialog__inputContainer___10jLM {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  position: relative; }
+
+.saveDialog__floppy___1TBPm {
+  box-shadow: 0 0 12px 1px white;
+  position: absolute;
+  right: -50px;
+  cursor: pointer; }
+
+.saveDialog__checkmark___2S-pF {
+  position: absolute;
+  right: -50px;
+  animation: saveDialog__fadeInOut___3m8sv 7s forwards; }
+.loadDialog__bigInput___1ruUB {
+  cursor: pointer;
+  padding: 8px 15px;
+  margin-bottom: 15px; }
+
+.loadDialog__title___1GSuM {
+  margin-bottom: 20px; }
+@font-face {
+  font-family: Doom;
+  src: url(/doom_minesweeper/static/media/DooM.d398da6f.ttf); }
+
+body {
+  margin: 0;
+  background-color: black; }
+
+/*# sourceMappingURL=main.30889e0b.css.map*/
