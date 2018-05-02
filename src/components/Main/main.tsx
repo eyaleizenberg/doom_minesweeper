@@ -40,8 +40,7 @@ class Main extends React.PureComponent<IMainProps, IMainState> {
   }
 
   calcRatio() {
-    const ratio = window.innerWidth / initialWidth;
-    return ratio > 1 ? 1 : ratio;
+    return window.innerWidth / initialWidth;
   }
 
   onResize = () => this.setState({ scaleRatio: this.calcRatio() });

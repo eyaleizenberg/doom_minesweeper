@@ -1,5 +1,6 @@
 {
   "name": "doom_minesweeper",
+  "homepage": "https://eyaleizenberg.github.io/doom_minesweeper",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -51,7 +52,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.3",
@@ -61,6 +64,7 @@
     "@types/react-dom": "^16.0.5",
     "@types/react-redux": "^5.0.15",
     "@types/redux-thunk": "^2.1.0",
+    "gh-pages": "latest",
     "prettier": "^1.11.1",
     "redux-immutable-state-invariant": "^2.0.0",
     "redux-mock-store": "^1.2.3",
