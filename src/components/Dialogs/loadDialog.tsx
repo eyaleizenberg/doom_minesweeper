@@ -21,8 +21,9 @@ class LoadDialog extends React.PureComponent<
   };
 
   renderFiles() {
-    return Object.keys(this.props.savedFiles).map(key => {
-      const file = this.props.savedFiles[key];
+    const { savedFiles } = this.props;
+    const fileElements = Object.keys(savedFiles).map(key => {
+      const file = savedFiles[key];
       if (!file.hasBeenSaved) {
         return null;
       }
@@ -38,6 +39,16 @@ class LoadDialog extends React.PureComponent<
         </div>
       );
     });
+
+    if (fileElements.some(element => element !== null)) {
+      return fileElements;
+    }
+
+    return (
+      <span className={classnames(dialogClasses.text, classes.noGames)}>
+        NO SAVED GAMES
+      </span>
+    );
   }
 
   render() {

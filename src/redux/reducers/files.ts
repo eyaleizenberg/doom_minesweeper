@@ -17,14 +17,17 @@ export const getSavedGames = (state: IFilesState): { [key: string]: IFile } =>
 export const getFileJustSaved = (state: IFilesState): string =>
   state.fileJustSaved;
 
-const generateEmpty = (existingGamesLength: number): IGame[] => {
-  let emptyGames = [];
+const generateEmpty = (
+  existingGamesLength: number
+): { [key: string]: IGame } => {
+  let emptyGames = {};
   for (let i = 0; i < MAX_FILES - existingGamesLength; i++) {
-    emptyGames.push({
-      id: generateUuid(),
+    const id = generateUuid();
+    emptyGames[id] = {
+      id,
       name: '',
       hasBeenSaved: false
-    });
+    };
   }
   return emptyGames;
 };
@@ -33,24 +36,19 @@ export default handleActions(
   {
     [ACTIONS.SAVED_FILES_RECEIVED]: (
       state: IFilesState,
-      { payload }: { payload: IGame[] }
+      { payload }: { payload: { [key: string]: IFile } }
     ) => {
-      const data =
-        payload.length < MAX_FILES
-          ? payload.concat(generateEmpty(payload.length))
-          : payload;
-      const savedFiles = data.reduce((res, file) => {
-        return { ...res, [file.id]: file };
-      }, {});
+      const numberOfFiles = Object.keys(payload).length;
+      const savedFiles = { ...payload, ...generateEmpty(numberOfFiles) };
       return { ...state, savedFiles };
     },
     [ACTIONS.FILE_SAVED]: (
       state: IFilesState,
-      { payload }: { payload: any }
+      { payload }: { payload: IFile }
     ) => {
       const savedFiles = { ...state.savedFiles };
       const { id } = payload;
-      savedFiles[id] = JSON.parse(JSON.stringify(payload));
+      savedFiles[id] = payload;
       return { ...state, fileJustSaved: id, savedFiles };
     },
     [ACTIONS.FILE_SAVED_RESET]: (state: IFilesState) => {

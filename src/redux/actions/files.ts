@@ -1,9 +1,11 @@
 import { Dispatch } from 'redux';
 import { createAction } from 'redux-actions';
 import * as ACTIONS from '../../constants/actionTypes';
-// import axios from 'axios';
-// import { getGamesRoute } from '../../constants/routes';
-import { getOrGenerateUserId } from '../../utilities/localStorage';
+import {
+  getOrGenerateUserId,
+  getSavedGames,
+  saveGame
+} from '../../utilities/localStorage';
 import { IState } from '../../interfaces/state';
 
 export const savedFilesReceivedAction = createAction(
@@ -15,10 +17,8 @@ export const gameLoadedAction = createAction(ACTIONS.FILE_LOADED);
 
 export const fetchSaved = () => (dispatch: Dispatch<IState>): void => {
   const userId = getOrGenerateUserId();
-  console.log(userId, dispatch);
-  // axios.get(getGamesRoute(userId)).then(response => {
-  //   dispatch(savedFilesReceivedAction(response.data));
-  // });
+  const games = getSavedGames(userId);
+  dispatch(savedFilesReceivedAction(games));
 };
 
 export const saveFile = (opts: { id: string; name: string }) => (
@@ -26,17 +26,17 @@ export const saveFile = (opts: { id: string; name: string }) => (
   getState: () => IState
 ): void => {
   const userId = getOrGenerateUserId();
-  console.log(userId);
-  // const { game, cells } = getState();
-  // axios
-  //   .post(getGamesRoute(userId), { ...opts, state: { game, cells } })
-  //   .then(response => {
-  //     dispatch(fileSavedAction(response.data));
-  //     setTimeout(() => dispatch(fileSavedResetAction()), 7000);
-  //   })
-  //   .catch(error => {
-  //     console.warn('OH SNAP! Couldn\'t save', error);
-  //   });
+  const { game, cells } = getState();
+  const savedGames = saveGame({
+    userId,
+    ...opts,
+    state: {
+      game,
+      cells
+    }
+  });
+
+  dispatch(fileSavedAction(savedGames));
 };
 
 export const loadFile = (id: string) => (
