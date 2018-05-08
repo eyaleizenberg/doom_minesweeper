@@ -21,7 +21,7 @@ class Toolbar extends React.PureComponent<IToolbarProps> {
     text: string,
     handleClick: () => void,
     protractorHook: string
-  ) {
+  ): JSX.Element {
     return (
       <div className={classes.introBox}>
         <span
@@ -35,7 +35,7 @@ class Toolbar extends React.PureComponent<IToolbarProps> {
     );
   }
 
-  renderFace() {
+  renderFace(): JSX.Element {
     const { isGameWon, isGameOver } = this.props;
     return (
       <div className={classes.face}>
@@ -44,7 +44,7 @@ class Toolbar extends React.PureComponent<IToolbarProps> {
     );
   }
 
-  renderIntroContent() {
+  renderIntroContent(): JSX.Element {
     return (
       <div className={classes.content}>
         <Sound url={doom2theme} playStatus={Sound.status.PLAYING} />
@@ -59,7 +59,7 @@ class Toolbar extends React.PureComponent<IToolbarProps> {
     );
   }
 
-  formatTime() {
+  formatTime(): string {
     const { timer } = this.props;
     let d = Number(timer);
     const m = Math.floor((d % 3600) / 60);
@@ -67,7 +67,7 @@ class Toolbar extends React.PureComponent<IToolbarProps> {
     return ('0' + m).slice(-2) + ':' + ('0' + s).slice(-2);
   }
 
-  renderInProgressContent() {
+  renderInProgressContent(): JSX.Element {
     const { isGameOver } = this.props;
 
     return (
@@ -85,7 +85,7 @@ class Toolbar extends React.PureComponent<IToolbarProps> {
     );
   }
 
-  renderInGameContainer(containerClass: string, text: string) {
+  renderInGameContainer(containerClass: string, text: string): JSX.Element {
     return (
       <div className={classnames(classes.inGameContainer, containerClass)}>
         <span className={classnames(classes.text, classes.statusText)}>
@@ -95,7 +95,7 @@ class Toolbar extends React.PureComponent<IToolbarProps> {
     );
   }
 
-  renderInGameActions() {
+  renderInGameActions(): JSX.Element {
     const { toggleNewGame, toggleSaveDialog, toggleLoadDialog } = this.props;
     return (
       <div
@@ -123,7 +123,7 @@ class Toolbar extends React.PureComponent<IToolbarProps> {
     );
   }
 
-  render() {
+  render(): JSX.Element {
     const { gameInProgress } = this.props;
     return (
       <div
