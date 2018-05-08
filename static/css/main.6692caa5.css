@@ -282,6 +282,11 @@
 
 .loadDialog__title___1GSuM {
   margin-bottom: 20px; }
+
+.loadDialog__noGames___l9yM- {
+  font-size: 20px;
+  color: #fffd6a;
+  margin-top: 20px; }
 @font-face {
   font-family: Doom;
   src: url(/doom_minesweeper/static/media/DooM.d398da6f.ttf); }
@@ -290,4 +295,4 @@ body {
   margin: 0;
   background-color: black; }
 
-/*# sourceMappingURL=main.30889e0b.css.map*/
+/*# sourceMappingURL=main.6692caa5.css.map*/
